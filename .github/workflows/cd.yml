@@ -25,6 +25,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
+          images: |
+            name=umamisoftware/umami
+            name=ghcr.io/umami-software/umami
           tags: |
             type=semver,pattern=${{ matrix.db-type }}-v{{version}}
             type=semver,pattern=${{ matrix.db-type }}-v{{major}}.{{minor}}
