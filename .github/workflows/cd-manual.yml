@@ -32,8 +32,8 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            name=umamisoftware/umami
-            name=ghcr.io/umami-software/umami
+            name=quadrubo/umami
+            name=ghcr.io/quadrubo/umami
           tags: |
             type=semver,pattern=${{ matrix.db-type }}-v{{ env.version }}
             type=semver,pattern=${{ matrix.db-type }}-v{{ env.major}}.{{ env.minor }}
