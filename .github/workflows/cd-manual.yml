@@ -43,7 +43,9 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image to ghcr.io for ${{ matrix.db-type }}
         with:
-          image: umami
+          file: Dockerfile
+          context: .
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           buildArgs: DATABASE_TYPE=${{ matrix.db-type }}
           registry: ghcr.io
@@ -55,7 +57,9 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image to docker.io for ${{ matrix.db-type }}
         with:
-          image: quadrubo/umami
+          file: Dockerfile
+          context: .
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           buildArgs: DATABASE_TYPE=${{ matrix.db-type }}
           registry: docker.io
