@@ -23,8 +23,8 @@ jobs:
         id: generate_tags
         run: |
           echo "tag_patch=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-          echo "tag_minor=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/tags/} | cut -d. -f1,2" >> $GITHUB_ENV
-          echo "tag_major=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/tags/} | cut -d. -f1" >> $GITHUB_ENV
+          echo "tag_minor=$(echo ${{ matrix.db-type }})-$(echo ${GITHUB_REF#refs/tags/} | cut -d. -f1,2)" >> $GITHUB_ENV
+          echo "tag_major=$(echo ${{ matrix.db-type }})-$(echo ${GITHUB_REF#refs/tags/} | cut -d. -f1)" >> $GITHUB_ENV
           echo "tag_latest=$(echo ${{ matrix.db-type }})-latest" >> $GITHUB_ENV
 
       - name: Echo stuff
