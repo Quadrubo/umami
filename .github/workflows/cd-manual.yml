@@ -30,9 +30,9 @@ jobs:
       - name: Generate tags
         id: generate_tags
         run: |
-          echo "tag_major=$(echo ${{ matrix.db-type }}-v{{ env.major }})" >> $GITHUB_ENV
-          echo "tag_minor=$(echo ${{ matrix.db-type }}-v{{ env.major }}.{{ env.minor }})" >> $GITHUB_ENV
-          echo "tag_patch=$(echo ${{ matrix.db-type }}-v{{ env.version }})" >> $GITHUB_ENV
+          echo "tag_major=$(echo ${{ matrix.db-type }}-v${{ env.major }})" >> $GITHUB_ENV
+          echo "tag_minor=$(echo ${{ matrix.db-type }}-v${{ env.major }}.${{ env.minor }})" >> $GITHUB_ENV
+          echo "tag_patch=$(echo ${{ matrix.db-type }}-v${{ env.version }})" >> $GITHUB_ENV
           echo "tag_latest=$(echo ${{ matrix.db-type }}-latest)" >> $GITHUB_ENV
 
       - uses: mr-smithers-excellent/docker-build-push@v6
