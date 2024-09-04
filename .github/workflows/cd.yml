@@ -28,7 +28,7 @@ jobs:
           echo "tag_latest=$(echo ${{ matrix.db-type }})-latest" >> $GITHUB_ENV
 
       - name: Echo stuff
-        id: echo stuff
+        id: echo_stuff
         run: |
           echo "hahahaha"
 
