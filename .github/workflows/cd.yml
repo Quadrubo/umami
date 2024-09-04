@@ -23,9 +23,14 @@ jobs:
         id: generate_tags
         run: |
           echo "tag_patch=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          echo "tag_minor=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/tags/v*.*.}" >> $GITHUB_ENV
-          echo "tag_major=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/tags/v*.*.*}" >> $GITHUB_ENV
+          echo "tag_minor=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/tags/v*.*}" >> $GITHUB_ENV
+          echo "tag_major=$(echo ${{ matrix.db-type }})-${GITHUB_REF#refs/tags/v*}" >> $GITHUB_ENV
           echo "tag_latest=$(echo ${{ matrix.db-type }})-latest" >> $GITHUB_ENV
+
+      - name: Echo stuff
+        id: echo stuff
+        run: |
+          echo "hahahaha"
 
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image to ghcr.io for ${{ matrix.db-type }}
