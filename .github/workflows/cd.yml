@@ -27,11 +27,6 @@ jobs:
           echo "tag_major=$(echo ${{ matrix.db-type }})-$(echo ${GITHUB_REF#refs/tags/} | cut -d. -f1)" >> $GITHUB_ENV
           echo "tag_latest=$(echo ${{ matrix.db-type }})-latest" >> $GITHUB_ENV
 
-      - name: Echo stuff
-        id: echo_stuff
-        run: |
-          echo "hahahaha"
-
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image to ghcr.io for ${{ matrix.db-type }}
         with:
